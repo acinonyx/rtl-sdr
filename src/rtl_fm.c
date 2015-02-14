@@ -1424,6 +1424,7 @@ int main(int argc, char **argv)
 	else {
 		fprintf(stderr, "\nLibrary error %d, exiting...\n", r);}
 
+	pthread_join(sock.thread, NULL);
 	rtlsdr_cancel_async(dongle.dev);
 	pthread_join(dongle.thread, NULL);
 	safe_cond_signal(&demod.ready, &demod.ready_m);
